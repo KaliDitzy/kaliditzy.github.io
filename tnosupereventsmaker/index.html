@@ -240,10 +240,6 @@
                     <td><input type="text" id="national-focus-name-input"></input></td>
                 </tr>
                 <tr>
-                    <td>National Focus Hex Color (leave blank for default):</td>
-                    <td><input type="text" id="national-focus-color-input"></input></td>
-                </tr>
-                <tr>
                     <td>Party 1 Popularity (1-100):</td>
                     <td><input type="number" id="party1" onchange onpropertychange onkeyuponpaste
                             oninput="UpdateChart()" </td>
@@ -335,7 +331,10 @@
                     </tr>
                 </table>
                 <h2>Save Results</h2>
-                <button id="saveresults">Download as png (Doesn't work yet)</button>
+                <!--<button id="saveresults">Download as png (Doesn't work yet)</button>-->
+				<button id="savefile" onClick="saveProgress()">Download as save file (Only saves text)</button>
+				<br>Load a save file <input type="file" id="loadfile" accept=".tnomk">
+				<div id="results" style="color: white;">Please save or load to see results.</div>
             </div>
         </div>
     </div>
