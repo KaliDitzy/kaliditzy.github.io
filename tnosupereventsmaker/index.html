@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./index.css">
+    <script src="./index.js"></script>
+    <title>TNO Maker</title>
+</head>
+
+<body>
+    <canvas id="pieChart"></canvas>
+    <script type="text/javascript" src="./piechart.js"></script>
+
+    <div class="result">
+        <h1>The New Order Nation & Events Maker</h1>
+        <h3>Fixed by KaliDitzy</h3>
+        <h4>Originally developed by Zakki0925224, and then Buoyo</h4>
+        <div class="pic-container">
+            <div class="asset-pic country-flag-pic-container"><img id="country-flag-pic"></div>
+            <div class="asset-pic country-leader-pic-container"><img id="country-leader-pic"></div>
+            <div class="asset-pic ideology-icon-pic-container"><img id="ideology-icon-pic"></div>
+            <div class="asset-pic national-focus-icon-pic-container"><span class="nf1"> </span><span
+                    class="nf2"></span></span><img id="national-focus-icon-pic"></div>
+            <div class="asset-pic news-pic-container"><img id="news-pic"></div>
+            <div class="asset-pic super-event-pic-container"><img id="super-event-pic"></div>
+            <div class="template-pic-container"><img src="./assets/tno-template.png" id="template-pic" width="1148">
+            </div>
+            <p class="political-window-label country-info-label" id="country-name-label"></p>
+            <p class="political-window-label country-info-label" id="faction-name-label"></p>
+            <p class="political-window-label country-info-label" id="leader-name-label"></p>
+            <p class="political-window-label" id="party-name-label"></p>
+            <p class="political-window-label" id="ideology-name-label"></p>
+            <p class="political-window-label" id="next-election-label"></p>
+            <p class="political-window-label" id="national-focus-name-label"></p>
+            <p class="world-news-popup-label" id="news-title-label"></p>
+            <p class="world-news-popup-label" id="news-description-label"></p>
+            <p class="world-news-popup-label" id="news-button-label"></p>
+            <p id="super-event-title-label"></p>
+            <p id="super-event-description-label"></p>
+            <p id="super-event-button-label"></p>
+        </div>
+        <button id="loading" hidden>Test</button>
+        <div class="both">
+            <div class="nation">
+                <h2>Nation Editor</h2>
+                <table>
+                    <tr>
+                        <td>Country Flag (82x52):</td>
+                        <td><input type="file" id="country-flag-input" accept="image/jpeg, image/png"></td>
+                    </tr>
+                    <tr>
+                        <td>Leader Portrait (156x210):</td>
+                        <td><input type="file" id="country-leader-input" accept="image/jpeg, image/png"></td>
+                    </tr>
+                    <tr>
+                        <td>Ideology Icon (68x68):</td>
+                        <td><input type="file" id="ideology-icon-input" accept="image/jpeg, image/png"></td>
+                    </tr>
+                    <tr>
+                        <td>National Focus Icon (94x76):</td>
+                        <td><input type="file" id="national-focus-icon-input" accept="image/jpeg, image/png"></td>
+                    </tr>
+            </div>
+            <div class="input">
+                <tr>
+                    <td>Country Name:</td>
+                    <td><input type="text" id="country-name-input"></input></td>
+                </tr>
+                <tr>
+                    <td>Faction Name:</td>
+                    <td><input type="text" id="faction-name-input"></input></td>
+                </tr>
+                <tr>
+                    <td>Leader Name:</td>
+                    <td><input type="text" id="leader-name-input"></input></td>
+                </tr>
+                <tr>
+                    <td>Party Name:</td>
+                    <td><input type="text" id="party-name-input"></input></td>
+                </tr>
+                <tr>
+                    <td>Ideology Name:</td>
+                    <td><input type="text" id="ideology-name-input"></input></td>
+                </tr>
+                <tr>
+                    <td>Next Election:</td>
+                    <td><input type="text" id="next-election-input"></input></td>
+                </tr>
+                <tr>
+                    <td>National Focus Name:</td>
+                    <td><input type="text" id="national-focus-name-input"></input></td>
+                </tr>
+                <tr>
+                    <td>National Focus Hex Color (leave blank for default):</td>
+                    <td><input type="text" id="national-focus-color-input"></input></td>
+                </tr>
+                <tr>
+                    <td>Party 1 Popularity (1-100):</td>
+                    <td><input type="number" id="party1" onchange onpropertychange onkeyuponpaste
+                            oninput="UpdateChart()" </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Party 1 Color (HEX):</td>
+                    <td><input type="" id="party1color" onchange onpropertychange onkeyuponpaste oninput="UpdateChart()"
+                            </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Party 2 Popularity (1-100):</td>
+                    <td><input type="number" id="party2" onchange onpropertychange onkeyuponpaste
+                            oninput="UpdateChart()" </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Party 2 Color (HEX):</td>
+                    <td><input type="" id="party2color" onchange onpropertychange onkeyuponpaste oninput="UpdateChart()"
+                            </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Party 3 Popularity (1-100):</td>
+                    <td><input type="number" id="party3" onchange onpropertychange onkeyuponpaste
+                            oninput="UpdateChart()" </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Party 3 Color (HEX):</td>
+                    <td><input type="" id="party3color" onchange onpropertychange onkeyuponpaste oninput="UpdateChart()"
+                            </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Party 4 Popularity (1-100):</td>
+                    <td><input type="number" id="party4" onchange onpropertychange onkeyuponpaste
+                            oninput="UpdateChart()" </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Party 4 Color (HEX):</td>
+                    <td><input type="" id="party4color" onchange onpropertychange onkeyuponpaste oninput="UpdateChart()"
+                            </td>
+                    <td></td>
+                </tr>
+                </table>
+            </div>
+            <div class="events">
+                <h2>Newspaper Event</h2>
+                <table>
+                    <tr>
+                        <td>Picture (161x420):</td>
+                        <td><input type="file" id="news-input" accept="image/jpeg, image/png"></td>
+                    </tr>
+                    <tr>
+                        <td>Title:</td>
+                        <td><input type="text" id="news-title-input"></input></td>
+                    </tr>
+                    <tr>
+                        <td>Description:</td>
+                        <td><textarea id="news-description-input"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>Button Text:</td>
+                        <td><input type="text" id="news-button-input"></input></td>
+                    </tr>
+                </table>
+
+                <h2>Super Event</h2>
+                <table>
+                    <tr>
+                        <td>Picture (573x455):</td>
+                        <td><input type="file" id="super-event-input" accept="image/jpeg, image/png"></td>
+                    </tr>
+                    <tr>
+                        <td>Title:</td>
+                        <td><input type="text" id="super-event-title-input" style="text-transform:uppercase"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Description:</td>
+                        <td><textarea id="super-event-description-input"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>Button Text:</td>
+                        <td><input type="text" id="super-event-button-input"></input></td>
+                    </tr>
+                </table>
+                <h2>Save Results</h2>
+                <button id="saveresults">Download as png (Doesn't work yet)</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
