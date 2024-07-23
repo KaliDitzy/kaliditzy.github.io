@@ -79,3 +79,8 @@ window.onload = function() {
     set_pic_event("news");
     set_pic_event("super-event");
 };
+
+function setIdeology(img) {
+	var imageObject = document.getElementById("ideology-icon-pic");
+	imageObject.src = "./assets/ideologies/"+img+".png";
+}

@@ -40,7 +40,7 @@
             <p id="super-event-description-label"></p>
             <p id="super-event-button-label"></p>
         </div>
-        <button id="loading" hidden>Test</button>
+        <button id="loading" hidden>Loading</button>
         <div class="both">
             <div class="nation">
                 <h2>Nation Editor</h2>
@@ -54,9 +54,151 @@
                         <td><input type="file" id="country-leader-input" accept="image/jpeg, image/png"></td>
                     </tr>
                     <tr>
-                        <td>Ideology Icon (68x68):</td>
+                        <td>Custom Ideology Icon (68x68):</td>
                         <td><input type="file" id="ideology-icon-input" accept="image/jpeg, image/png"></td>
                     </tr>
+					<tr>
+                        <td>Preset Ideology Icons</td>
+                    </tr>
+					<tr>
+						<td width="100%">
+						<div style="overflow: scroll; height:256px;">
+							<table style="border: 2px solid #666 !important;">
+								<tr>
+									<td>
+									Communism
+									</td>
+								</tr>
+								<tr>
+									<td>
+									<button type="button" id="communism" onClick="setIdeology(this.id)"><img src="./assets/ideologies/communism.png"></button>
+									</td>
+								</tr>
+							</table>
+							<table style="border: 2px solid #666 !important;">
+								<tr>
+									<td>
+									Conservatism
+									</td>
+								</tr>
+								<tr>
+									<td>
+									<button type="button" id="conservatism" onClick="setIdeology(this.id)"><img src="./assets/ideologies/conservatism.png"></button>
+									</td>
+								</tr>
+							</table>
+							<table style="border: 2px solid #666 !important;">
+								<tr>
+									<td>
+									Despotism
+									</td>
+								</tr>
+								<tr>
+									<td>
+									<button type="button" id="despotism" onClick="setIdeology(this.id)"><img src="./assets/ideologies/despotism.png"></button>
+									</td>
+								</tr>
+							</table>
+							<table style="border: 2px solid #666 !important;">
+								<tr>
+									<td>
+									Fascism
+									</td>
+								</tr>
+								<tr>
+									<td>
+									<button type="button" id="fascism" onClick="setIdeology(this.id)"><img src="./assets/ideologies/fascism.png"></button>
+									</td>
+								</tr>
+							</table>
+							<table style="border: 2px solid #666 !important;">
+								<tr>
+									<td>
+									Liberal Conservatism
+									</td>
+								</tr>
+								<tr>
+									<td>
+									<button type="button" id="liberal_conservatism" onClick="setIdeology(this.id)"><img src="./assets/ideologies/liberal_conservatism.png"></button>
+									</td>
+								</tr>
+							</table>
+							<table style="border: 2px solid #666 !important;">
+								<tr>
+									<td>
+									Liberalism
+									</td>
+								</tr>
+								<tr>
+									<td>
+									<button type="button" id="liberalism" onClick="setIdeology(this.id)"><img src="./assets/ideologies/liberalism.png"></button>
+									</td>
+								</tr>
+							</table>
+							<table style="border: 2px solid #666 !important;">
+								<tr>
+									<td>
+									National Socialism
+									</td>
+								</tr>
+								<tr>
+									<td>
+									<button type="button" id="national_socialism" onClick="setIdeology(this.id)"><img src="./assets/ideologies/national_socialism.png"></button>
+									</td>
+								</tr>
+							</table>
+							<table style="border: 2px solid #666 !important;">
+								<tr>
+									<td>
+									Paternalism
+									</td>
+								</tr>
+								<tr>
+									<td>
+									<button type="button" id="paternalism" onClick="setIdeology(this.id)"><img src="./assets/ideologies/paternalism.png"></button>
+									</td>
+								</tr>
+							</table>
+							<table style="border: 2px solid #666 !important;">
+								<tr>
+									<td>
+									Progressivism
+									</td>
+								</tr>
+								<tr>
+									<td>
+									<button type="button" id="progressivism" onClick="setIdeology(this.id)"><img src="./assets/ideologies/progressivism.png"></button>
+									</td>
+								</tr>
+							</table>
+							<table style="border: 2px solid #666 !important;">
+								<tr>
+									<td>
+									Socialism
+									</td>
+								</tr>
+								<tr>
+									<td>
+									<button type="button" id="socialism" onClick="setIdeology(this.id)"><img src="./assets/ideologies/socialism.png"></button>
+									</td>
+								</tr>
+							</table>
+							<table style="border: 2px solid #666 !important;">
+								<tr>
+									<td>
+									Ultranationalism
+									</td>
+								</tr>
+								<tr>
+									<td>
+									<button type="button" id="ultranationalism" onClick="setIdeology(this.id)"><img src="./assets/ideologies/ultranationalism.png"></button>
+									</td>
+								</tr>
+							</table>
+							<br>
+						</div>
+						</td>
+					</tr>
                     <tr>
                         <td>National Focus Icon (94x76):</td>
                         <td><input type="file" id="national-focus-icon-input" accept="image/jpeg, image/png"></td>
