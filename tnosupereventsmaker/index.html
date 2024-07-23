@@ -62,7 +62,12 @@
                     </tr>
 					<tr>
 						<td width="100%">
-						<script type="text/javascript" src="./ideologyImages.js"></script>
+						<script>
+							function setIdeology(img) {
+								var imageObject = document.getElementById("ideology-icon-pic");
+								imageObject.src = "./assets/ideologies/"+img+".png";
+							}
+						</script>
 						<div style="overflow: scroll; height:256px;">
 							<table style="border: 2px solid #666 !important;">
 								<tr>
