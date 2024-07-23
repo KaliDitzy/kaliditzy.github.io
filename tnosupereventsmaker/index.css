@@ -343,6 +343,8 @@ button {
 }
 
 canvas {
-    position: absolute;
+    position: relative;
+	right: 1012px;
+	bottom: 613px;
     z-index: 99 !important;
 }
