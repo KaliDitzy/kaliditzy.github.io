@@ -239,7 +239,19 @@
                     <td>National Focus Name:</td>
                     <td><input type="text" id="national-focus-name-input"></input></td>
                 </tr>
-                <tr>
+				<tr>
+                    <td>Party Popularities (Must add up to 100), Split parties using commas (,):</td>
+                    <td><input type="text" id="parties" onchange onpropertychange onkeyuponpaste
+                            oninput="UpdateChart()" </td>
+                    <td></td>
+                </tr>
+				<tr>
+                    <td>Party Colors (HEX: #ACE or #ABCDEF), Split parties using commas (,):</td>
+                    <td><input type="text" id="partycolors" onchange onpropertychange onkeyuponpaste
+                            oninput="UpdateChart()" </td>
+                    <td></td>
+                </tr>
+                <!--<tr>
                     <td>Party 1 Popularity (1-100):</td>
                     <td><input type="number" id="party1" onchange onpropertychange onkeyuponpaste
                             oninput="UpdateChart()" </td>
@@ -286,7 +298,7 @@
                     <td><input type="" id="party4color" onchange onpropertychange onkeyuponpaste oninput="UpdateChart()"
                             </td>
                     <td></td>
-                </tr>
+                </tr>-->
                 </table>
             </div>
             <div class="events">
