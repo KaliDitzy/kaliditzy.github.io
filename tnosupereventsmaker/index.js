@@ -75,7 +75,7 @@ function saveProgress() {
 	results.setAttribute('style', 'color: red;');
 	
 	var stream = "";
-	stream += "1;|"; //version
+	stream += "2;|"; //version
 	stream += document.getElementById("country-name-input").value+";|";
 	stream += document.getElementById("faction-name-input").value+";|";
 	stream += document.getElementById("leader-name-input").value+";|";
@@ -86,17 +86,11 @@ function saveProgress() {
 	stream += document.getElementById("news-title-input").value+";|";
 	stream += document.getElementById("news-description-input").value+";|";
 	stream += document.getElementById("news-button-input").value+";|";
-	stream += document.getElementById("super-event-title-input").value+",;|";
+	stream += document.getElementById("super-event-title-input").value+";|";
 	stream += document.getElementById("super-event-description-input").value+";|";
 	stream += document.getElementById("super-event-button-input").value+";|";
-	stream += String(document.getElementById("party1").value)+";|";
-	stream += document.getElementById("party1color").value+";|";
-	stream += String(document.getElementById("party2").value)+";|";
-	stream += document.getElementById("party2color").value+";|";
-	stream += String(document.getElementById("party3").value)+";|";
-	stream += document.getElementById("party3color").value+";|";
-	stream += String(document.getElementById("party4").value)+";|";
-	stream += document.getElementById("party4color").value;
+	stream += document.getElementById("parties").value+";|";
+	stream += document.getElementById("partycolors").value;
 	
 	var element = document.createElement('a');
 	element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(stream));
@@ -126,7 +120,7 @@ function endLoadProgress(result) {
 	//convert version 0 to 1
 	//simply change , to ;|
 	
-	if (data.length != 22)
+	if (data.length != 16)
 	{
 		var popup = confirm("WARNING: This save file may be corrupted, please confirm that you wish to continue with loading.");
 		
@@ -138,7 +132,7 @@ function endLoadProgress(result) {
 	}
 	else
 	{
-		if (data[0] != "1")
+		if (data[0] != "2")
 		{
 			var popup = confirm("WARNING: This save file is anachronistic, this means that you are attempting to load either a newer or older version of the .tnomk format, are you sure you want to continue?");
 			
@@ -163,14 +157,8 @@ function endLoadProgress(result) {
 	document.getElementById("super-event-title-input").value = data[11];
 	document.getElementById("super-event-description-input").value = data[12];
 	document.getElementById("super-event-button-input").value = data[13];
-	document.getElementById("party1").value = parseFloat(data[14]);
-	document.getElementById("party1color").value = data[15];
-	document.getElementById("party2").value = parseFloat(data[16]);
-	document.getElementById("party2color").value = data[17];
-	document.getElementById("party3").value = parseFloat(data[18]);
-	document.getElementById("party3color").value = data[19];
-	document.getElementById("party4").value = parseFloat(data[20]);
-	document.getElementById("party4color").value = data[21];
+	document.getElementById("parties").value = data[14];
+	document.getElementById("partycolors").value = data[15];
 	
 	set_label("country-name", 220, -6, 14)
 	set_label("faction-name", 220, 13, 14);
@@ -185,6 +173,16 @@ function endLoadProgress(result) {
     set_label("super-event-title", 530, 0, 20);
     set_label("super-event-description", 595, 360, 19);
     set_label("super-event-button", 720, 548, 19);
+	
+	var element = document.createElement('a');
+	element.setAttribute('onClick', 'UpdateChart();');
+
+	element.style.display = 'none';
+	document.body.appendChild(element);
+
+	element.click();
+	
+	document.body.removeChild(element);
 	
 	results.innerText = "Save loaded!";
 	results.setAttribute('style', 'color: green;');
