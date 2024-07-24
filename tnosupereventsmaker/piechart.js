@@ -73,30 +73,18 @@ function drawPieChart(party1, party2, party3, party4, party1color, party2color, 
   var beginAngle = 0
   var endAngle = twoRad * party1 / 100
   drawPieSlice(ctx, x, y, radius, beginAngle, endAngle, party1color, party1color)
-  for (let i = 0; i < 4; i++) {
-		drawArc(ctx, x, y, radius-(i*0.75), beginAngle, endAngle, colorShade(party1color, -96));
-  }
   if (party2 <= 0) { return }
   var beginAngle = endAngle
   var endAngle = beginAngle + (twoRad * party2 / 100)
   drawPieSlice(ctx, x, y, radius, beginAngle, endAngle, party2color, party2color)
-  for (let i = 0; i < 4; i++) {
-		drawArc(ctx, x, y, radius-(i*0.75), beginAngle, endAngle, colorShade(party2color, -96));
-  }
   if (party3 <= 0) { return }
   var beginAngle = endAngle
   var endAngle = beginAngle + (twoRad * party3 / 100)
   drawPieSlice(ctx, x, y, radius, beginAngle, endAngle, party3color, party3color)
-  for (let i = 0; i < 4; i++) {
-		drawArc(ctx, x, y, radius-(i*0.75), beginAngle, endAngle, colorShade(party3color, -96));
-  }
   if (party4 <= 0) { return }
   var beginAngle = endAngle
   var endAngle = beginAngle + (twoRad * party4 / 100)
   drawPieSlice(ctx, x, y, radius, beginAngle, endAngle, party4color, party4color)
-  for (let i = 0; i < 4; i++) {
-		drawArc(ctx, x, y, radius-(i*0.75), beginAngle, endAngle, colorShade(party4color, -96));
-  }
 }
 
 function UpdateChart() {

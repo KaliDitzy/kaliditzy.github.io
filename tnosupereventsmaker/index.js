@@ -75,27 +75,27 @@ function saveProgress() {
 	results.setAttribute('style', 'color: red;');
 	
 	var stream = "";
-	stream += "0,"; //version
-	stream += document.getElementById("country-name-input").value+",";
-	stream += document.getElementById("faction-name-input").value+",";
-	stream += document.getElementById("leader-name-input").value+",";
-	stream += document.getElementById("party-name-input").value+",";
-	stream += document.getElementById("ideology-name-input").value+",";
-	stream += document.getElementById("next-election-input").value+",";
-	stream += document.getElementById("national-focus-name-input").value+",";
-	stream += document.getElementById("news-title-input").value+",";
-	stream += document.getElementById("news-description-input").value+",";
-	stream += document.getElementById("news-button-input").value+",";
-	stream += document.getElementById("super-event-title-input").value+",";
-	stream += document.getElementById("super-event-description-input").value+",";
-	stream += document.getElementById("super-event-button-input").value+",";
-	stream += String(document.getElementById("party1").value)+",";
-	stream += document.getElementById("party1color").value+",";
-	stream += String(document.getElementById("party2").value)+",";
-	stream += document.getElementById("party2color").value+",";
-	stream += String(document.getElementById("party3").value)+",";
-	stream += document.getElementById("party3color").value+",";
-	stream += String(document.getElementById("party4").value)+",";
+	stream += "1;|"; //version
+	stream += document.getElementById("country-name-input").value+";|";
+	stream += document.getElementById("faction-name-input").value+";|";
+	stream += document.getElementById("leader-name-input").value+";|";
+	stream += document.getElementById("party-name-input").value+";|";
+	stream += document.getElementById("ideology-name-input").value+";|";
+	stream += document.getElementById("next-election-input").value+";|";
+	stream += document.getElementById("national-focus-name-input").value+";|";
+	stream += document.getElementById("news-title-input").value+";|";
+	stream += document.getElementById("news-description-input").value+";|";
+	stream += document.getElementById("news-button-input").value+";|";
+	stream += document.getElementById("super-event-title-input").value+",;|";
+	stream += document.getElementById("super-event-description-input").value+";|";
+	stream += document.getElementById("super-event-button-input").value+";|";
+	stream += String(document.getElementById("party1").value)+";|";
+	stream += document.getElementById("party1color").value+";|";
+	stream += String(document.getElementById("party2").value)+";|";
+	stream += document.getElementById("party2color").value+";|";
+	stream += String(document.getElementById("party3").value)+";|";
+	stream += document.getElementById("party3color").value+";|";
+	stream += String(document.getElementById("party4").value)+";|";
 	stream += document.getElementById("party4color").value;
 	
 	var element = document.createElement('a');
@@ -121,7 +121,34 @@ function endLoadProgress(result) {
 	result = result.split(",")[1]
 	result = new TextDecoder().decode(base64ToBytes(result));
 	
-	data = result.split(",")
+	data = result.split(";|")
+	
+	//convert version 0 to 1
+	//simply change , to ;|
+	
+	if (data.length != 22)
+	{
+		var popup = confirm("WARNING: This save file may be corrupted, please confirm that you wish to continue with loading.");
+		
+		if (popup == false)
+		{
+			results.innerText = "Load cancelled.";
+			return;
+		}
+	}
+	else
+	{
+		if (data[0] != "1")
+		{
+			var popup = confirm("WARNING: This save file is anachronistic, this means that you are attempting to load either a newer or older version of the .tnomk format, are you sure you want to continue?");
+			
+			if (popup == false)
+			{
+				results.innerText = "Load cancelled.";
+				return;
+			}
+		}
+	}
 	
 	document.getElementById("country-name-input").value = data[1];
 	document.getElementById("faction-name-input").value = data[2];
@@ -145,20 +172,22 @@ function endLoadProgress(result) {
 	document.getElementById("party4").value = parseFloat(data[20]);
 	document.getElementById("party4color").value = data[21];
 	
+	set_label("country-name", 220, -6, 14)
+	set_label("faction-name", 220, 13, 14);
+    set_label("leader-name", 220, 32, 14);
+    set_label("party-name", 235, 68, 20);
+    set_label("ideology-name", 235, 100, 20);
+    set_label("next-election", 235, 120, 20);
+    set_label("national-focus-name", 234, 158, 20);
+    set_label("news-title", 103, 295, 15);
+    set_label("news-description", 240, 340, 10);
+    set_label("news-button", 230, 679, 12);
+    set_label("super-event-title", 530, 0, 20);
+    set_label("super-event-description", 595, 360, 19);
+    set_label("super-event-button", 720, 548, 19);
+	
 	results.innerText = "Save loaded!";
 	results.setAttribute('style', 'color: green;');
-	
-	if (result[0] != "0")
-	{
-		results.innerText += " This save is anachronistic, and may have experienced issues loading.";
-		results.setAttribute('style', 'color: yellow;');
-	}
-	
-	if (data.length != 22)
-	{
-		results.innerText += " There may have been issues due to a mismatch in file formats.";
-		results.setAttribute('style', 'color: yellow;');
-	}
 }
 
 function startLoadProgress() {
