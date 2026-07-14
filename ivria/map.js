@@ -12,6 +12,7 @@ const map = L.map("map", {
     maxZoom: 2
 });
 
+// other layers in the future, prolly
 const imageUrl = "assets/political.png";
 
 L.imageOverlay(imageUrl, bounds).addTo(map);
@@ -21,6 +22,7 @@ map.on("click", function(e) {
     console.log(e.latlng);
 });
 
+//i put this here cuz i dont wanna forget how to add markers
 //L.marker([1200, 3500])
 //    .addTo(map)
 //    .bindPopup("Castle Aster");
@@ -40,7 +42,7 @@ const polities = {
     "#a8fff9": "Ankaian Colonies"
 };
 
-// Image setup
+// image to sample from
 const img = new Image();
 img.src = imageUrl;
 
@@ -71,28 +73,13 @@ Object.assign(label.style, {
 
 document.body.appendChild(label);
 
-
-// The image overlay (make sure you keep a reference to it)
 const overlay = L.imageOverlay(imageUrl, bounds).addTo(map);
-
 
 // Mouse tracking
 map.on("mousemove", function(e) {
     if (!img.complete || !ctx) return;
 
     const overlayBounds = overlay.getBounds();
-
-    /*
-        Convert mouse position into a percentage of the image.
-
-        xPercent:
-            0 = left edge of image
-            1 = right edge of image
-
-        yPercent:
-            0 = top edge of image
-            1 = bottom edge of image
-    */
 
     const xPercent =
         (e.latlng.lng - overlayBounds.getWest()) /
@@ -101,7 +88,6 @@ map.on("mousemove", function(e) {
     const yPercent =
         (e.latlng.lat - overlayBounds.getNorth()) /
         (overlayBounds.getSouth() - overlayBounds.getNorth());
-
 
     // Outside image
     if (
@@ -114,8 +100,7 @@ map.on("mousemove", function(e) {
         return;
     }
 
-
-    // Convert percentage into original image pixels
+    // percentage to pixel
     const x = Math.floor(xPercent * img.width);
     const y = Math.floor(yPercent * img.height);
 
