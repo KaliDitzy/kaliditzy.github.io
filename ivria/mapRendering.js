@@ -19,17 +19,13 @@ L.imageOverlay(imageUrl, bounds).addTo(map);
 
 map.fitBounds(bounds);
 map.on("click", function(e) {
-    console.log(e.latlng);
+    console.log([e.latlng.lat, e.latlng.lng]);
 });
-
-//i put this here cuz i dont wanna forget how to add markers
-//L.marker([1200, 3500])
-//    .addTo(map)
-//    .bindPopup("Castle Aster");
 
 const polities = {
     "#446882": "Ocean",
     "#ffffff": "???",
+    "#ff0000": "Contested Territory",
     "#339643": "Ivrian Revolutionaries",
     "#ffb200": "Tyscandean Empire",
     "#a87300": "Tyscandean Frontier",
