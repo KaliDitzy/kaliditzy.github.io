@@ -2,10 +2,53 @@ html,
 body {
     margin: 0;
     height: 100%;
+
+    font-family: sans-serif;
 }
 
 #map {
     width: 100vw;
     height: 100vh;
     image-rendering: pixelated;
+}
+
+/* Overlay above Leaflet */
+.news-bar {
+    position: fixed;
+
+    right: 32px;
+    bottom: 48px;
+
+    width: 640px;
+    max-height: 480px;
+
+    background: rgba(20, 20, 20, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    border-radius: 3px;
+
+    color: white;
+
+    overflow: hidden;
+
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+
+    z-index: 1000;
+}
+
+.news-header {
+    padding: 12px 16px;
+    font-weight: bold;
+    background: rgba(0,0,0,0.4);
+}
+
+.news-list {
+    max-height: 340px;
+    overflow-y: auto;
+}
+
+.news-item {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
