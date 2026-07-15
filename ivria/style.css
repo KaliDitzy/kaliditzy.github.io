@@ -12,7 +12,6 @@ body {
     image-rendering: pixelated;
 }
 
-/* Overlay above Leaflet */
 .news-bar {
     position: fixed;
 
