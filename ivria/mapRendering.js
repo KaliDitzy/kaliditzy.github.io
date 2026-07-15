@@ -12,10 +12,18 @@ const map = L.map("map", {
     maxZoom: 2
 });
 
-// other layers in the future, prolly
+const baseLayers = {
+    "Political": L.imageOverlay("assets/political.png", bounds),
+    "Climate": L.imageOverlay("assets/climate.png", bounds)
+};
+
+baseLayers["Political"].addTo(map);
+
+L.control.layers(baseLayers).addTo(map);
+
 const imageUrl = "assets/political.png";
 
-L.imageOverlay(imageUrl, bounds).addTo(map);
+//L.imageOverlay(imageUrl, bounds).addTo(map);
 
 map.fitBounds(bounds);
 map.on("click", function(e) {
