@@ -42,3 +42,47 @@ lines.forEach(points => {
     weight: 2
   }).addTo(map);
 });*/
+
+// Custom icons
+const battleIcon = L.icon({
+  iconUrl:  "assets/icons/battle.png",
+  iconSize: [32, 32],
+  iconAnchor: [16, 16],
+  popupAnchor:  [0, -16]
+});
+const cwpiIcon = L.icon({
+  iconUrl:  "assets/flags/cwpi.png",
+  iconSize: [32, 21],
+  iconAnchor: [32, 11],
+  popupAnchor:  [0, -11]
+});
+
+// Markers
+const activeBattleWest = L.marker([3490.5, 4348.5], {
+  icon: battleIcon
+});
+activeBattleWest.bindTooltip("Battles between the Councillors and the Colony of Ivria");
+
+const activeBattleMain = L.marker([3477.75, 4416], {
+  icon: battleIcon
+});
+activeBattleMain.bindTooltip("Battle of the Convention");
+
+// Behavior
+function UpdateMarkerVisibility() {
+  if (map.getZoom() >= 1) {
+    if (!map.hasLayer(activeBattleWest)) {
+      activeBattleWest.addTo(map);
+    }
+  } else {
+    if (map.hasLayer(activeBattleWest)) {
+      map.removeLayer(activeBattleWest);
+    }
+  }
+}
+
+map.on("zoomend", UpdateMarkerVisibility);
+
+// Add everything to the map
+UpdateMarkerVisibility();
+activeBattleMain.addTo(map);
